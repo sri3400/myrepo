@@ -3,14 +3,14 @@ kind: Ingress
 metadata:
   name: my-ingress
   annotations:
-    kubernetes.io/ingress.class: "alb"
+    kubernetes.io/ingress.class: "ad2e809cbcf864dbc8c610f89eeaa9c3-300698702.us-east-1.elb.amazonaws.com"
     alb.ingress.kubernetes.io/scheme: "internet-facing"
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
-    alb.ingress.kubernetes.io/certificate-arn: <your-certificate-arn>
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:533267151046:certificate/5efb1846-a250-4244-9b74-1170d8b0e4b3
 spec:
   tls:
   - hosts:
-    - mydomain.com
+    - saicloud.live
     secretName: my-tls-secret
   rules:
   - host: mydomain.com
@@ -20,6 +20,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: my-service
+            name: boardgame-ssvc
             port:
               name: http
